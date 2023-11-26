@@ -1,3 +1,5 @@
+//ASSIGNMENT PREDICT THE OUTPUT 
+
 //1
 const cars = ['Tesla', 'Mercedes', 'Honda']
 const [ randomCar ] = cars
