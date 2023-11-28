@@ -69,6 +69,7 @@ console.log(`This took ${performance.now() - start} milliseconds to run`);
     //output: 6765    This took 5.022125244140625 milliseconds to run
 
 
+//   Write a more efficient function to reverse a string
 
     const { performance } = require('perf_hooks');
     const start = performance.now();
