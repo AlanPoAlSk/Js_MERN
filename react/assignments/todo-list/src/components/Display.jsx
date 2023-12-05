@@ -34,9 +34,9 @@ const Display = ({tasks , setTasks}) =>{
                             <td className={done === 'Yes' ? 'task-done' : ''}>{date}</td>
                             {
                                 priority == 1?
-                                <td className={done === 'Yes' ? 'task-done' : ''}>Low</td>
+                                <td style={{color : "yellow"}} className={done === 'Yes' ? 'task-done' : ''}>Low</td>
                                 :
-                                <td className={done === 'Yes' ? 'task-done' : ''}>High</td>
+                                <td style={{color : "red"}} className={done === 'Yes' ? 'task-done' : ''}>High</td>
                             }
                             
                             {
