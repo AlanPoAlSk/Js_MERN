@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios';
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
     
 const Detail = (props) => {
     const [product, setProduct] = useState({})
@@ -17,7 +17,7 @@ const Detail = (props) => {
             <h1>{product.title}</h1>
             <p style={{fontSize: 'larger'}}>Price: <span style={{fontWeight: ' bolder', fontStyle: 'italic'}}>${product.price}</span></p>
             <p style={{fontSize: 'larger'}}>Description: <span style={{fontWeight: ' bolder', fontStyle: 'italic'}}>" {product.description} "</span></p>
-            <a href="/products">back</a>
+            <Link to={"/products"}>back</Link>
         </div>
     )
 }
