@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import ProductForm from './ProductForm';
 import ProductList from './ProductList';
+import Detail from './Detail';
 import axios from 'axios'
     
 const Main =  () => {
@@ -14,13 +15,17 @@ const Main =  () => {
                 setLoaded(true);
             })
             .catch(err => console.error(err));
-    },[]);
-    
+    },[products]);
+ //with [products] ,when the list of products changes, it will update the list of all products displayed
+    const removeFromDom = productId => {
+        setProducts(products.filter(product => product._id != productId));
+    }
     return (
         <div>
             <ProductForm/>
             <hr/>
-            {loaded && <ProductList products={products}/>}
+            {loaded && <ProductList products={products} removeFromDom = {removeFromDom}/>}
+            
         </div>
     )
 }

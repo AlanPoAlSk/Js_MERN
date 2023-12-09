@@ -1,14 +1,26 @@
-import React from 'react'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
     
 const ProductList = (props) => {
+    const { removeFromDom } = props;
+    
+    const deleteProduct = (productId) => {
+        axios.delete('http://localhost:8000/api/products/' + productId)
+            .then(res => {
+                removeFromDom(productId)
+            })
+            .catch(err => console.error(err));
+    }
     
 
     return (
         <div>
             {props.products.map( (product, i) =>
-                // <p style={{fontWeight:'bold'}} key={i}> {i+1}. {product.title} - - ${product.price} - - "{product.description}"</p>
-                <p style={{fontWeight:'bold'}} key={i}> {i+1}.  <a href={"/products/"+ product._id}>{product.title}</a></p>
+                <div key={i} style={{display:'flex', alignItems: 'center', justifyContent:'space-between', border: '2px solid black' , marginBottom:'5px'}}>
+                    <p style={{fontWeight:'bold'}}> {i+1}.  <Link to={"/products/"+ product._id}>{product.title}</Link></p>
+                    <button onClick={(e)=>{deleteProduct(product._id)}}>Delete</button>
+                </div>
+                
             )}
         </div>
     )

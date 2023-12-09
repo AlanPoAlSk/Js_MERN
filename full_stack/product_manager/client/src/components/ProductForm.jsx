@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import axios from 'axios';
+
 
 const ProductForm = () => {
     //keep track of what is being typed via useState hook
     const [title, setTitle] = useState(""); 
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
+    
     //handler when the form is submitted
     const onSubmitHandler = e => {
         //prevent default behavior of the submit
@@ -16,9 +18,18 @@ const ProductForm = () => {
             price,
             description
         })
-            .then(res=>console.log(res))
-            .catch(err=>console.log(err))
+            .then(res=> {
+                console.log(res);
+                setTitle('');
+                setPrice('');
+                setDescription('');
+            })
+            .catch(err=>console.log(err));
+            
+            
+            
     }
+    
     //onChange to update title, price and description
     return (
         <form onSubmit={onSubmitHandler}>
