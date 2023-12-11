@@ -31,9 +31,9 @@ module.exports.getAuthor = (request, response) => {
 }
 
 module.exports.editAuthor = (request, response) => {
-    Author.findOneAndUpdate({_id: request.params.id}, request.body, {new:true})
+    Author.findOneAndUpdate({_id: request.params.id}, request.body,{runValidators: true}, {new:true})
         .then(editAuthor => response.json(editAuthor))
-        .catch(err => response.json(err))
+        .catch(err => response.status(400).json(err))
 }
 
 module.exports.deleteAuthor = (request, response) => {

@@ -36,13 +36,14 @@ const AuthorForm = () => {
                 navigate(-1)
             })
             .catch(err=> {
+                // const {response : {data: {message}}} = err
                 const errorResponse = err.response.data.errors;
                 const errorsArr = [];
                 for(const key of Object.keys(errorResponse)){
                     errorsArr.push(errorResponse[key].message)
                 }
                 setErrors(errorsArr);
-                console.log(err);
+                console.log('sorry, you failed');
             
         })
             
@@ -51,15 +52,17 @@ const AuthorForm = () => {
     
     //onChange to update title, price and description
     return (
-        <form onSubmit={onSubmitHandler}>
+        <div>
             <h2>Favorite authors</h2>
             <Link to={'/authors'}>Home</Link>
-            <h3>Add a new author:</h3>
+            <h3>Add a new Author</h3>
             {
-                    NameError ?
-                    <p style={{color: 'red'}}>{ NameError }</p> : 
+                    errors ?
+                    <p style={{color: 'red'}}>{ errors }</p> : 
                     <p></p>
                     }
+                    
+        <form onSubmit={onSubmitHandler}>
             <p style={{display: 'flex', justifyContent: 'center'}}>
                 <label>Name: </label><br/>
                 <input className='bigger' type="text" onChange={handleName} value={name}/>
@@ -67,6 +70,7 @@ const AuthorForm = () => {
             <Link style={{marginRight: '20px'}} to={'/authors'}>Cancel</Link>
             <input type="submit"/>
         </form>
+        </div>
     )
 }
 
