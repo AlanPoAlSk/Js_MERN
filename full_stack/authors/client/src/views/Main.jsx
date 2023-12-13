@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import AuthorList from './AuthorList';
+import AuthorList from '../components/AuthorList';
 import axios from 'axios'
 
 const Main =  () => {
